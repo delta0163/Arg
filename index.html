@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sweet dead</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+
+/* =========================
+   ОБЩИЕ СТРАНИЦЫ
+========================= */
+
+.page {
+    width: 100%;
+    height: 100vh;
+}
+
+
+/* =========================
+   ПЕРВАЯ СТРАНИЦА
+========================= */
+
+#page1 {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#sweetDead {
+    color: black;
+    font-size: 50px;
+    font-weight: bold;
+
+    cursor: pointer;
+    user-select: none;
+}
+
+
+/* =========================
+   ВТОРАЯ СТРАНИЦА
+========================= */
+
+#page2 {
+    display: none;
+
+    background: white;
+
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#answers {
+    color: black;
+    font-size: 50px;
+    font-weight: bold;
+
+    margin-bottom: 35px;
+}
+
+
+.answerButton {
+    width: 200px;
+    padding: 15px;
+
+    margin: 7px;
+
+    background: black;
+    color: white;
+
+    border: none;
+    border-radius: 4px;
+
+    font-size: 18px;
+
+    cursor: pointer;
+}
+
+.answerButton:hover {
+    background: #333;
+}
+
+
+/* =========================
+   ОКНО ПАРОЛЯ
+========================= */
+
+#passwordBox {
+    display: none;
+
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: white;
+
+    padding: 25px;
+
+    border: 2px solid black;
+
+    text-align: center;
+
+    z-index: 100;
+}
+
+#passwordInput {
+    margin-top: 12px;
+
+    padding: 10px;
+
+    font-size: 16px;
+}
+
+#checkPassword {
+    margin-top: 10px;
+
+    padding: 10px 20px;
+
+    background: black;
+    color: white;
+
+    border: none;
+
+    cursor: pointer;
+}
+
+#message {
+    margin-top: 10px;
+}
+
+
+/* =========================
+   ДОСЬЕ
+========================= */
+
+.dossier {
+    display: none;
+
+    width: 100%;
+    height: 100vh;
+
+    padding: 40px;
+
+    background: #eeeeee;
+
+    color: black;
+
+    overflow-y: auto;
+}
+
+.dossier h1 {
+    font-size: 40px;
+
+    border-bottom: 2px solid black;
+
+    padding-bottom: 10px;
+}
+
+.dossier h2 {
+    margin-top: 30px;
+}
+
+.dossier p {
+    font-size: 18px;
+
+    line-height: 1.6;
+}
+
+.backButton {
+    margin-top: 30px;
+
+    padding: 12px 25px;
+
+    background: black;
+    color: white;
+
+    border: none;
+
+    cursor: pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- ==================================
+     СТРАНИЦА 1
+================================== -->
+
+<div id="page1" class="page">
+
+    <div id="sweetDead">
+        Sweet dead
+    </div>
+
+</div>
+
+
+
+<!-- ==================================
+     СТРАНИЦА 2
+================================== -->
+
+<div id="page2" class="page">
+
+    <div id="answers">
+        Answers
+    </div>
+
+
+    <button class="answerButton" onclick="openPassword(1)">
+        Nemka
+    </button>
+
+
+    <button class="answerButton" onclick="openPassword(2)">
+        Delta
+    </button>
+
+
+    <button class="answerButton" onclick="openPassword(3)">
+        Answer 3
+    </button>
+
+</div>
+
+
+
+<!-- ==================================
+     ОКНО ПАРОЛЯ
+================================== -->
+
+<div id="passwordBox">
+
+    <div>
+        Введите пароль
+    </div>
+
+    <input
+        id="passwordInput"
+        type="password"
+        placeholder="Пароль"
+    >
+
+    <br>
+
+    <button id="checkPassword">
+        Проверить
+    </button>
+
+    <div id="message"></div>
+
+</div>
+
+
+
+<!-- ==================================
+     ДОСЬЕ NEMKA
+================================== -->
+
+<div id="dossier1" class="dossier">
+
+    <h1>ДОСЬЕ №01 — NEMKA</h1>
+
+    <h2>Идентификация</h2>
+
+    <p>
+        Имя: Nemka
+    </p>
+
+    <p>
+        Статус: СЕКРЕТНО
+    </p>
+
+    <h2>Информация</h2>
+
+    <p>
+        Здесь будет находиться информация о Nemka.
+    </p>
+
+    <button class="backButton" onclick="backToAnswers()">
+        ← Назад
+    </button>
+
+</div>
+
+
+
+<!-- ==================================
+     ДОСЬЕ DELTA
+================================== -->
+
+<div id="dossier2" class="dossier">
+
+    <h1>ДОСЬЕ №02 — DELTA</h1>
+
+    <h2>Идентификация</h2>
+
+    <p>
+        Имя: Delta
+    </p>
+
+    <p>
+        Статус: СЕКРЕТНО
+    </p>
+
+    <h2>Информация</h2>
+
+    <p>
+        Здесь будет находиться информация о Delta.
+    </p>
+
+    <button class="backButton" onclick="backToAnswers()">
+        ← Назад
+    </button>
+
+</div>
+
+
+
+<!-- ==================================
+     ДОСЬЕ №3
+================================== -->
+
+<div id="dossier3" class="dossier">
+
+    <h1>ДОСЬЕ №03</h1>
+
+    <h2>Идентификация</h2>
+
+    <p>
+        Имя: UNKNOWN
+    </p>
+
+    <p>
+        Статус: СЕКРЕТНО
+    </p>
+
+    <h2>Информация</h2>
+
+    <p>
+        Данные отсутствуют.
+    </p>
+
+    <button class="backButton" onclick="backToAnswers()">
+        ← Назад
+    </button>
+
+</div>
+
+
+
+<script>
+
+
+/* ==================================
+   ФОТО ПЕРВОЙ СТРАНИЦЫ
+================================== */
+
+const photos = [
+
+    "https://images.pexels.com/photos/36319687/pexels-photo-36319687.jpeg",
+
+    "https://images.pexels.com/photos/36319688/pexels-photo-36319688.jpeg"
+
+];
+
+let currentPhoto = 0;
+
+
+function changePhoto() {
+
+    document.getElementById("page1").style.backgroundImage =
+        'url("' + photos[currentPhoto] + '")';
+
+    currentPhoto++;
+
+    if (currentPhoto >= photos.length) {
+        currentPhoto = 0;
+    }
+
+}
+
+
+changePhoto();
+
+setInterval(changePhoto, 500);
+
+
+
+/* ==================================
+   SWEET DEAD → ANSWERS
+================================== */
+
+document.getElementById("sweetDead").onclick = function() {
+
+    document.getElementById("page1").style.display = "none";
+
+    document.getElementById("page2").style.display = "flex";
+
+};
+
+
+
+/* ==================================
+   ПАРОЛИ
+================================== */
+
+const passwords = {
+
+    1: "D3ADl4s†",
+
+    2: "GODNIGHT",
+
+    3: "dead"
+
+};
+
+
+let selectedAnswer = null;
+
+
+
+/* ==================================
+   ОТКРЫТЬ ОКНО ПАРОЛЯ
+================================== */
+
+function openPassword(number) {
+
+    selectedAnswer = number;
+
+    document.getElementById("passwordBox").style.display = "block";
+
+    document.getElementById("passwordInput").value = "";
+
+    document.getElementById("message").innerText = "";
+
+    document.getElementById("passwordInput").focus();
+
+}
+
+
+
+/* ==================================
+   ПРОВЕРКА ПАРОЛЯ
+================================== */
+
+document.getElementById("checkPassword").onclick = function() {
+
+    const enteredPassword =
+        document.getElementById("passwordInput").value;
+
+
+    if (enteredPassword === passwords[selectedAnswer]) {
+
+        document.getElementById("passwordBox").style.display = "none";
+
+        openDossier(selectedAnswer);
+
+    } else {
+
+        document.getElementById("message").innerText =
+            "Неверный пароль.";
+
+    }
+
+};
+
+
+
+/* ==================================
+   ОТКРЫТИЕ ДОСЬЕ
+================================== */
+
+function openDossier(number) {
+
+    document.getElementById("page2").style.display = "none";
+
+
+    document.getElementById("dossier1").style.display = "none";
+    document.getElementById("dossier2").style.display = "none";
+    document.getElementById("dossier3").style.display = "none";
+
+
+    if (number === 1) {
+
+        document.getElementById("dossier1").style.display = "block";
+
+    }
+
+
+    if (number === 2) {
+
+        document.getElementById("dossier2").style.display = "block";
+
+    }
+
+
+    if (number === 3) {
+
+        document.getElementById("dossier3").style.display = "block";
+
+    }
+
+}
+
+
+
+/* ==================================
+   НАЗАД К ANSWERS
+================================== */
+
+function backToAnswers() {
+
+    document.getElementById("dossier1").style.display = "none";
+    document.getElementById("dossier2").style.display = "none";
+    document.getElementById("dossier3").style.display = "none";
+
+    document.getElementById("page2").style.display = "flex";
+
+}
+
+</script>
+
+</body>
+</html>
